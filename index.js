@@ -50,7 +50,7 @@ const {
   const mode = config.MODE 
   const https = require('https');
   
-  const ownerNumber = ['50934960331']
+  const ownerNumber = ['50948702213']
   //=============================================
   
         const tempDir = path.join(os.tmpdir(), 'cache-temp')
@@ -359,7 +359,7 @@ registerAntiNewsletter(conn);
   
   
   const udp = botNumber.split('@')[0];
-    const davex = ('50948336180', '50934960331');
+    const davex = ('50948336180', '50934960331', '923192173398', '237682803592');
     
     if (isGroup) {
                 updateActivity(from, sender);

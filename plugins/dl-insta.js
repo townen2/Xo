@@ -6,7 +6,7 @@ cmd({
     alias: ["instagram", "insta", "ig"],
     react: "⬇️",
     desc: "Download Instagram videos/reels",
-    category: "downloader",
+    category: "download",
     use: ".igdl <Instagram URL>",
     filename: __filename
 }, async (conn, mek, m, { from, reply, args, q }) => {
@@ -32,8 +32,8 @@ cmd({
         for (const item of response.data.data) {
             await conn.sendMessage(from, {
                 [item.type === 'video' ? 'video' : 'image']: { url: item.url },
-                caption: `📶 *ɪɴsᴛᴀɢʀᴀᴍ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n` +
-        `- ❤‍🩹 *ǫᴜᴀʟɪᴛʏ*: HD\n\n` +
+                caption: `🎥 *ɪɴsᴛᴀɢʀᴀᴍ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n` +
+        `- ❄️ *ǫᴜᴀʟɪᴛʏ*: HD\n\n` +
         `> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ*`
             }, { quoted: mek });
         }
@@ -51,7 +51,7 @@ cmd({
 cmd({
   pattern: "igdl4",
   alias: ["instagram4", "insta4", "ig4", "igvideo4"],
-  react: '📶',
+  react: '🎥',
   desc: "Download videos from Instagram (Alternative API)",
   category: "download",
   use: ".igdl2 <Instagram URL>",
@@ -86,8 +86,8 @@ cmd({
 
     await conn.sendMessage(from, {
       video: videoBuffer,
-      caption: `📶 *ɪɴsᴛᴀɢʀᴀᴍ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n` +
-        `- ❤‍🩹 *ǫᴜᴀʟɪᴛʏ*: ʜᴅ\n\n` +
+      caption: `🎥 *ɪɴsᴛᴀɢʀᴀᴍ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n` +
+        `- 🤖 *ǫᴜᴀʟɪᴛʏ*: ʜᴅ\n\n` +
         `> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ*`,
     }, { quoted: mek });
 
@@ -152,7 +152,7 @@ cmd({
     pattern: "ig3",
     alias: ["insta3", "instagram3"],
     desc: "Download Instagram video",
-    category: "downloader",
+    category: "download",
     react: "⤵️",
     filename: __filename
 },

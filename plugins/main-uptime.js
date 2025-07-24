@@ -16,9 +16,6 @@ function formatRemainingTime(ms) {
 }
 
 // Newsletter channel info
-const newsletterJid = "120363401051937059@newsletter";
-const newsletterName = "𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐔𝐏𝐃𝐀𝐓𝐄𝐒";
-const newsletterUrl = "https://whatsapp.com/channel/120363401051937059";
 
 cmd({
   pattern: "runtime",
@@ -41,26 +38,20 @@ ${uptimeFormatted}
 *╰═════════════════⊷*
     `.trim();
 
-    await client.sendMessage(message.chat, {
-      image: { url: "https://files.catbox.moe/roubzi.jpg" },
-      caption: status,
-      contextInfo: {
-        forwardingScore: 100,
+    await conn.sendMessage(from, {
+    image: { url: 'https://files.catbox.moe/roubzi.jpg' },
+    caption: status,
+    contextInfo: {
+        mentionedJid: [m.sender],
+        forwardingScore: 999,
         isForwarded: true,
-        forwardedNewsletterMessage: {
-          newsletterJid,
-          newsletterName
-        },
-        externalAdReply: {
-          title: newsletterName,
-          body: "Click here to join the official channel!",
-          mediaType: 1,
-          thumbnailUrl: "https://files.catbox.moe/roubzi.jpg",
-          sourceUrl: newsletterUrl,
-          renderLargerThumbnail: true
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363401051937059@newsletter', // ou ton JID actuel
+            newsletterName: '𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃',
+            serverMessageId: 143
         }
-      }
-    }, { quoted: message });
+    }
+}, { quoted: mek })
 
   } catch (err) {
     console.error("Alive Command Error:", err);

@@ -15,6 +15,11 @@ function formatRemainingTime(ms) {
   return `*┃❍ ${days} ᴅᴀʏ(s)*\n*┃❍ ${hours} ʜᴏᴜʀ(s)*\n*┃❍ ${minutes} ᴍɪɴᴜᴛᴇ(s)*\n*┃❍ ${seconds} sᴇᴄᴏɴᴅ(s)*`;
 }
 
+// Newsletter channel info
+const newsletterJid = "120363401051937059@newsletter";
+const newsletterName = "𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐔𝐏𝐃𝐀𝐓𝐄𝐒";
+const newsletterUrl = "https://whatsapp.com/channel/120363401051937059";
+
 cmd({
   pattern: "runtime",
   alias: ["uptime", "run"],
@@ -24,7 +29,6 @@ cmd({
   filename: __filename
 }, async (client, message, args, { reply }) => {
   try {
-    const start = Date.now();
     const uptimeMs = process.uptime() * 1000;
     const uptimeFormatted = formatRemainingTime(uptimeMs);
 
@@ -35,13 +39,29 @@ cmd({
 *╭═════════════════⊷*
 ${uptimeFormatted}
 *╰═════════════════⊷*
-    `;
+    `.trim();
 
     await client.sendMessage(message.chat, {
       image: { url: "https://files.catbox.moe/roubzi.jpg" },
-      caption: status.trim(),
+      caption: status,
+      contextInfo: {
+        forwardingScore: 100,
+        isForwarded: true,
+        forwardedNewsletterMessage: {
+          newsletterJid,
+          newsletterName
+        },
+        externalAdReply: {
+          title: newsletterName,
+          body: "Click here to join the official channel!",
+          mediaType: 1,
+          thumbnailUrl: "https://files.catbox.moe/roubzi.jpg",
+          sourceUrl: newsletterUrl,
+          renderLargerThumbnail: true
+        }
+      }
     }, { quoted: message });
-        
+
   } catch (err) {
     console.error("Alive Command Error:", err);
     await reply(`❌ Error: ${err.message || err}`);

@@ -52,8 +52,7 @@ const {
   
   const ownerNumber = ['50948702213']
   //=============================================
-  
-        const tempDir = path.join(os.tmpdir(), 'cache-temp')
+  const tempDir = path.join(os.tmpdir(), 'cache-temp')
   if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir)
   }
@@ -110,34 +109,33 @@ const port = process.env.PORT || 9090;
   connectToWA()
   }
   } else if (connection === 'open') {
-  console.log('🧬 Installing Plugins')
-  console.log('Plugins installed successful ✅')
-  console.log('MEGALODON CONNECTED SUCCESSFULLY ✅')	  
+  console.log('Plugins installed ✅️')
+  console.log ('Bot connected to whatsapp ✅️')
   const path = require('path');
   fs.readdirSync("./plugins/").forEach((plugin) => {
   if (path.extname(plugin).toLowerCase() == ".js") {
   require("./plugins/" + plugin);
   }
   });
+console.log('Bot is running')
   
-  
-   let up = `╭──────────────●●*
-> *➺ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ ᴄᴏɴɴᴇᴄᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʏ ᴛʏᴘᴇ
-> ${prefix}ᴍᴇɴᴜ ᴛᴏ sᴇᴇ ᴛʜᴇ ғᴜʟʟ ᴄᴏᴍᴍᴀɴᴅ ʟɪsᴛ💫*
+  let up = `> *╭──────────────●●*
+> *➺ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ ᴄᴏɴɴᴇᴄᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʏ ᴛʏᴘᴇ*
+> *${prefix}ᴍᴇɴᴜ ᴛᴏ sᴇᴇ ᴛʜᴇ ғᴜʟʟ ᴄᴏᴍᴍᴀɴᴅ ʟɪsᴛ💫*
 
 > *ᴊᴏɪɴ ᴏᴜʀ ᴡʜᴀᴛsᴀᴘᴘ ᴄʜᴀɴɴᴇʟ ғᴏʀ ᴜᴘᴅᴀᴛᴇs ʙᴏᴛ*
 
 > *https://whatsapp.com/channel/0029VbAdcIXJP216dKW1253g*
 
-> ➳ ᴘʀᴇғɪx ${prefix}
+> ➳ ᴘʀᴇғɪx 『 ${prefix} 』
+> ➳ ᴍᴏᴅᴇ 〔〔${mode}〕〕
 
 > ╰──────────────●●
 > *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ*`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/w1l8b0.jpg` }, caption: up })
+    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/x13xdq.jpg` }, caption: up })
   }
   })
   conn.ev.on('creds.update', saveCreds)
-
 
  // ==================================
   

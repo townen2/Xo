@@ -16,54 +16,21 @@ function toUpperStylized(str) {
 // Normalisation des catégories
 const normalize = (str) => str.toLowerCase().replace(/\s+menu$/, '').trim();
 
-// Emojis par catégorie normalisée
-const emojiByCategory = {
-  ai: '🤖',
-  anime: '🍥',
-  audio: '🎧',
-  bible: '📖',
-  download: '⬇️',
-  downloader: '📥',
-  fun: '🎮',
-  game: '🕹️',
-  group: '👥',
-  img_edit: '🖌️',
-  info: 'ℹ️',
-  information: '🧠',
-  logo: '🖼️',
-  main: '🏠',
-  media: '🎞️',
-  menu: '📜',
-  misc: '📦',
-  music: '🎵',
-  other: '📁',
-  owner: '👑',
-  privacy: '🔒',
-  search: '🔎',
-  settings: '⚙️',
-  sticker: '🌟',
-  tools: '🛠️',
-  user: '👤',
-  utilities: '🧰',
-  utility: '🧮',
-  wallpapers: '🖼️',
-  whatsapp: '📱',
-};
-
 cmd({
   pattern: "menu",
   alias: ["💫", "mega", "allmenu"],
   use: '.menu',
   desc: "Show all bot commands",
   category: "menu",
-  react: "💫",
+  react: "🎴",
   filename: __filename
 },
 async (dyby, mek, m, { from, reply }) => {
   try {
     const sender = m?.sender || mek?.key?.participant || mek?.key?.remoteJid || 'unknown@s.whatsapp.net';
-    const totalCommands = commands.length;
-
+    const username = m.pushName || 'User';
+    const plugins = commands.length;
+    const version = config.VERSION || '1.0.0';
     const uptime = () => {
       let sec = process.uptime();
       let h = Math.floor(sec / 3600);
@@ -71,20 +38,23 @@ async (dyby, mek, m, { from, reply }) => {
       let s = Math.floor(sec % 60);
       return `${h}h ${m}m ${s}s`;
     };
+    const uptimeStr = uptime();
+    const time = moment().tz(config.TIME_ZONE || 'UTC').format('HH:mm:ss');
+    const date = moment().tz(config.TIME_ZONE || 'UTC').format('DD/MM/YYYY');
 
     let dybymenu = `
-*╭══〘 𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃 〙*
-*┃◆* ᴜꜱᴇʀ : @${sender.split("@")[0]}
-*┃◆* ʀᴜɴᴛɪᴍᴇ : ${uptime()}
-*┃◆* ᴍᴏᴅᴇ : *${config.MODE}*
-*┃◆* ᴘʀᴇғɪx : 「 ${config.PREFIX} 」
-*┃◆* ᴏᴡɴᴇʀ : ${config.OWNER_NAME}
-*┃◆* ᴘʟᴜɢɪɴꜱ : 『 ${totalCommands} 』
-*┃◆* ᴅᴇᴠ : ᴅʏʙʏ ᴛᴇᴄʜ
-*┃◆* ᴠᴇʀꜱɪᴏɴ : 1.0.0
-*╰════════════════⊷*`;
+*╭══〘〘 *𝐌𝐈𝐍𝐈 𝐂𝐎𝐃𝐄𝐑* 〙〙═⊷
+┃❍ ᴍᴏᴅᴇ: ${config.MODE}
+┃❍ ᴘʀᴇғɪx: [ ${config.PREFIX} ]
+┃❍ ᴜsᴇʀ: ${username}
+┃❍ ᴘʟᴜɢɪɴs: ${plugins}
+┃❍ ᴠᴇʀsɪᴏɴ: ${version}
+┃❍ ᴜᴘᴛɪᴍᴇ: ${uptimeStr}
+┃❍ ᴛɪᴍᴇ ɴᴏᴡ: ${time}
+┃❍ ᴅᴀᴛᴇ ᴛᴏᴅᴀʏ: ${date}
+╰═════════════════⊷\n\n`;
 
-    // Regrouper les commandes par catégorie normalisée
+    // Regrouper les commandes par catégorie
     let categories = {};
     for (let cmd of commands) {
       if (!cmd.category) continue;
@@ -96,15 +66,14 @@ async (dyby, mek, m, { from, reply }) => {
     // Construction du menu par catégorie
     const sortedKeys = Object.keys(categories).sort();
     for (let key of sortedKeys) {
-      const emoji = emojiByCategory[key] || '💫';
-      dybymenu += `\n\n┌── 『 ${emoji} *${toUpperStylized(key)} ᴍᴇɴᴜ* 』`;
+      dybymenu += `\n\n╭━━━━ 『 *${toUpperStylized(key)} ᴍᴇɴᴜ*』`;
 
       const cmds = categories[key].filter(c => c.pattern).sort((a, b) => a.pattern.localeCompare(b.pattern));
       for (let c of cmds) {
         const usage = c.pattern.split('|')[0];
-        dybymenu += `\n├❃ ${config.PREFIX}${toUpperStylized(usage)}`;
+        dybymenu += `\n╏⁠➳ ${config.PREFIX}${toUpperStylized(usage)}`;
       }
-      dybymenu += `\n┗━━━━━━━━━━━━━━❃`;
+      dybymenu += `\n╰━━━━━━━━━━━━━━━━━⊷`;
     }
 
     // Envoi du menu avec image

@@ -43,7 +43,7 @@ async (dyby, mek, m, { from, reply }) => {
     const date = moment().tz(config.TIME_ZONE || 'UTC').format('DD/MM/YYYY');
 
     let dybymenu = `
-*╭══〘〘 *𝐌𝐈𝐍𝐈 𝐂𝐎𝐃𝐄𝐑* 〙〙═⊷
+*╭══〘〘 *𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃* 〙〙═⊷
 ┃❍ ᴍᴏᴅᴇ: ${config.MODE}
 ┃❍ ᴘʀᴇғɪx: [ ${config.PREFIX} ]
 ┃❍ ᴜsᴇʀ: ${username}
@@ -52,7 +52,7 @@ async (dyby, mek, m, { from, reply }) => {
 ┃❍ ᴜᴘᴛɪᴍᴇ: ${uptimeStr}
 ┃❍ ᴛɪᴍᴇ ɴᴏᴡ: ${time}
 ┃❍ ᴅᴀᴛᴇ ᴛᴏᴅᴀʏ: ${date}
-╰═════════════════⊷\n\n`;
+╰═════════════════⊷`;
 
     // Regrouper les commandes par catégorie
     let categories = {};

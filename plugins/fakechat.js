@@ -1,5 +1,5 @@
-import { cmd } from '../command.js';
-import moment from 'moment-timezone';
+const moment = require('moment-timezone'); // <-- ADD THIS LINE
+const { cmd, commands } = require('../command');
 
 cmd({
   pattern: "iphonequote",

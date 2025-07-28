@@ -1,4 +1,4 @@
-const { cmd, commands } = require('../command');
+const { cmd } = require('../command');
 
 cmd({
   pattern: "iphonequote",
@@ -12,18 +12,22 @@ cmd({
 async (conn, m, { q, prefix, command }) => {
   try {
     if (!q) {
-      return m.reply(`❌ ᴇxᴀᴍᴘʟᴇ ᴜsᴀɢᴇ:\n .iphone ɪ'ᴍ ᴛʜᴇ ᴘʀᴇsɪᴅᴇɴᴛ`);
+      return m.reply(`❌ ᴇxᴀᴍᴘʟᴇ:\n${prefix + command} I'm the president`);
     }
 
-    const url = `https://veloria-ui.vercel.app/imagecreator/fake-chat?messageText=${encodeURIComponent(q)}`;
+    // Construire l'URL sans heure ni batterie
+    const url = `https://veloria-ui.vercel.app/imagecreator/fake-chat?messageText=${encodeURIComponent(q)}&batteryLevel=&time=`;
 
+    // Optionnel : tester l'URL avec une requête HEAD si tu veux t'assurer qu'elle est valide
+
+    // Envoi de l'image
     await conn.sendMessage(m.chat, {
       image: { url },
-      caption: `📱 *ғᴀᴋᴇ ɪᴘʜᴏɴᴇ ǫᴜᴏᴛᴇᴅ ᴍᴇssᴀɢᴇ*`
+      caption: `📱 *Fake iPhone quoted message*`
     }, { quoted: m });
 
   } catch (err) {
-    console.error(err);
-    m.reply("❌ An error occurred while generating the image.");
+    console.error("Plugin iphonequote error:", err);
+    m.reply("❌ Failed to generate fake chat image. The API might be down or unreachable.");
   }
 });

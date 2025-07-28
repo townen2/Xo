@@ -6,7 +6,7 @@ cmd({
     alias: ["app"],
     react: "📲",
     desc: "📥 Download APK directly",
-    category: "📁 Download",
+    category: "download",
     filename: __filename
 },
 async (conn, mek, m, { from, q, reply }) => {

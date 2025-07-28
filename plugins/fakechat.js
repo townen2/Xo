@@ -12,22 +12,19 @@ cmd({
 async (conn, m, { q, prefix, command }) => {
   try {
     if (!q) {
-      return m.reply(`❌ ᴇxᴀᴍᴘʟᴇ:\n${prefix + command} I'm the president`);
+      return m.reply(`❌ Example:\n.iphone I'm the president`);
     }
 
-    // Construire l'URL sans heure ni batterie
-    const url = `https://veloria-ui.vercel.app/imagecreator/fake-chat?messageText=${encodeURIComponent(q)}&batteryLevel=&time=`;
+    const url = `https://veloria-ui.vercel.app/imagecreator/fake-chat?messageText=${encodeURIComponent(q)}`;
+    console.log("Generated image URL:", url);
 
-    // Optionnel : tester l'URL avec une requête HEAD si tu veux t'assurer qu'elle est valide
-
-    // Envoi de l'image
     await conn.sendMessage(m.chat, {
-      image: { url },
+      image: { url, mimetype: 'image/jpeg' },
       caption: `📱 *Fake iPhone quoted message*`
     }, { quoted: m });
 
   } catch (err) {
-    console.error("Plugin iphonequote error:", err);
-    m.reply("❌ Failed to generate fake chat image. The API might be down or unreachable.");
+    console.error(err);
+    m.reply("❌ Failed to generate image. Error: " + err.message);
   }
 });

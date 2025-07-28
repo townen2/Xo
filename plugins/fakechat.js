@@ -4,7 +4,7 @@ cmd({
   pattern: "iphonequote",
   alias: ["fakechat", "iphone"],
   category: "tools",
-  react: "😉"
+  react: "😉",
   desc: "Generate a fake iPhone quoted message",
   use: "<text>",
   filename: __filename
@@ -12,7 +12,7 @@ cmd({
 async (conn, m, { q, prefix, command }) => {
   try {
     if (!q) {
-      return m.reply(`❌ ᴇxᴀᴍᴘʟᴇ ᴜsᴀɢᴇ:\n${prefix + command} ɪ'ᴍ ᴛʜᴇ ᴘʀᴇsɪᴅᴇɴᴛ`);
+      return m.reply(`❌ ᴇxᴀᴍᴘʟᴇ ᴜsᴀɢᴇ:\n .iphone ɪ'ᴍ ᴛʜᴇ ᴘʀᴇsɪᴅᴇɴᴛ`);
     }
 
     const url = `https://veloria-ui.vercel.app/imagecreator/fake-chat?messageText=${encodeURIComponent(q)}`;

@@ -10,7 +10,7 @@ cmd({
     alias: ["changelog", "cupdate", "updateinfo"],
     react: "🚀",
     desc: "Check bot version, system stats, and update info.",
-    category: "info",
+    category: "main",
     filename: __filename,
 }, async (conn, m, mdata, { from, sender, pushname, reply }) => {
     try {
@@ -80,7 +80,7 @@ cmd({
 
         // 📤 Envoi du message avec image
         await conn.sendMessage(from, {
-            image: { url: 'https://files.catbox.moe/2ozipw.jpg' },
+            image: { url: 'https://files.catbox.moe/roubzi.jpg' },
             caption,
             contextInfo: {
                 mentionedJid: [mdata.sender],

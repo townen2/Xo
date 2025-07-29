@@ -18,17 +18,18 @@ cmd({
     const uptime = runtime(process.uptime());
     const usedRam = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2);
     const totalRam = (os.totalmem() / 1024 / 1024).toFixed(2);
+    const mode = config.MODE || "Public";
 
     const caption = `
-┌───⭓ ʜɪ *${pushname}* 🖐
-│
-│ ⏳ ᴜᴘᴛɪᴍᴇ: ${uptime}
-│ 🤖 ʙᴏᴛ ɴᴀᴍᴇ: ${config.BOT_NAME}
-│ 🧑‍💻 ᴏᴡɴᴇʀ: ${config.OWNER_NAME}
-│ 
-│ 📢 ᴊᴏɪɴ ᴏᴜʀ ᴄʜᴀɴɴᴇʟ:
-│ https://whatsapp.com/channel/0029VbAdcIXJP216dKW1253g
-└────────────⭓
+╭━━━❮ 𝙱𝙾𝚃 𝙸𝙽𝙵𝙾 ❯━━━╮
+│➪ 𝙱𝙾𝚃 𝙽𝙰𝙼𝙴 : *ᴍᴇɢᴀʟᴏᴅᴏɴ-ᴍᴅ*
+│➪ 𝚅𝙴𝚁𝚂𝙸𝙾𝙽 : 1.0.0
+│➪ 𝙾𝚆𝙽𝙴𝚁 : *${config.OWNER_NAME}*      
+│➪ 𝚆𝙰 𝙽𝚄𝙼𝙱𝙴𝚁 : *${config.OWNER_NUMBER}*
+│➪ 𝙿𝙻𝙰𝚃𝙵𝙾𝚁𝙼 : *${os.platform()}*
+│➪ 𝙶𝙴𝙽𝙴𝚁𝙰𝙻 : *${mode}*
+│➪ 𝙿𝚁𝙴𝙵𝙸𝚇 ✞︎: *${prefix}*
+╰━━━━━━━━━━━━━━━━━╯
     `.trim();
 
     const buttons = [
@@ -48,27 +49,27 @@ cmd({
                   {
                     title: "📂 ᴍᴇɴᴜ",
                     description: "ᴏᴘᴇɴ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅꜱ",
-                    id: `${prefix}menu`,
+                    id: `${config.PREFIX}menu`,
                   },
                   {
                     title: "👑 ᴏᴡɴᴇʀ",
                     description: "ᴄᴏɴᴛᴀᴄᴛ ʙᴏᴛ ᴏᴡɴᴇʀ",
-                    id: `${prefix}owner`,
+                    id: `${config.PREFIX}owner`,
                   },
                   {
                     title: "📶 ᴘɪɴɢ",
                     description: "ᴛᴇꜱᴛ ʙᴏᴛ ꜱᴘᴇᴇᴅ",
-                    id: `${prefix}ping`,
+                    id: `${config.PREFIX}ping`,
                   },
                   {
                     title: "🖥️ ꜱʏꜱᴛᴇᴍ",
                     description: "ꜱʏꜱᴛᴇᴍ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ",
-                    id: `${prefix}system`,
+                    id: `${config.PREFIX}checkupdate`,
                   },
                   {
                     title: "🛠️ ʀᴇᴘᴏ",
                     description: "ɢɪᴛʜᴜʙ ʀᴇᴘᴏꜱɪᴛᴏʀʏ",
-                    id: `${prefix}repo`,
+                    id: `${config.PREFIX}repo`,
                   },
                 ],
               },

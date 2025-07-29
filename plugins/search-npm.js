@@ -5,7 +5,7 @@ cmd({
   pattern: "npm2",
   desc: "Search for a package on npm.",
   react: '📦',
-  category: "convert",
+  category: "search",
   filename: __filename,
   use: ".npm <package-name>"
 }, async (conn, mek, msg, { from, args, reply }) => {

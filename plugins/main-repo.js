@@ -10,7 +10,7 @@ cmd({
     filename: __filename,
 },
 async (conn, mek, m, { from, reply }) => {
-    const githubRepoURL = 'https://github.com/DybyTech/MEGALODON-MD';
+    const githubRepoURL = 'https://github.com/DybyTech/MEGALODON-MD/fork';
     const imageURL = 'https://files.catbox.moe/roubzi.jpg';
 
     try {
@@ -22,7 +22,7 @@ async (conn, mek, m, { from, reply }) => {
         if (!response.ok) throw new Error(`Erreur API GitHub : ${response.status}`);
         const repoData = await response.json();
 
-        const botname = "MEGALODON-MD";
+        const botname = "ᴍᴇɢᴀʟᴏᴅᴏɴ-ᴍᴅ";
         const author = repoData.owner?.login || "Inconnu";
         const repoInfo = {
             stars: repoData.stargazers_count,
@@ -32,9 +32,7 @@ async (conn, mek, m, { from, reply }) => {
         const createdDate = new Date(repoData.created_at).toLocaleDateString();
         const lastUpdateDate = new Date(repoData.updated_at).toLocaleDateString();
 
-        const caption = `*ʜᴇʟʟᴏ ,,,👋 ᴛʜɪs ɪs ${botname}*
-ᴛʜᴇ ʙᴇsᴛ ʙᴏᴛ ɪɴ ᴛʜᴇ ᴜɴɪᴠᴇʀsᴇ ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ. ғᴏʀᴋ ᴀɴᴅ ɢɪᴠᴇ ᴀ sᴛᴀʀ 🌟 ᴛᴏ ᴍʏ ʀᴇᴘᴏ
-╭───────────────────
+        const caption = `╭───────────────────
 │✞ *sᴛᴀʀs:* ${repoInfo.stars}
 │✞ *ғᴏʀᴋs:* ${repoInfo.forks}
 │✞ *ʀᴇʟᴇᴀsᴇ ᴅᴀᴛᴇ:* ${createdDate}

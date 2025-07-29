@@ -6,7 +6,7 @@ cmd({
   alias: ["randomwall", "wallpaper"],
   react: "🌌",
   desc: "Download random wallpapers based on keywords.",
-  category: "wallpapers",
+  category: "search",
   use: ".rw <keyword>",
   filename: __filename
 }, async (conn, m, store, { from, args, reply }) => {

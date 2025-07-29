@@ -1,62 +1,51 @@
 const { cmd } = require('../command');
+const { getBuffer } = require('../lib/myfunc');
 const config = require('../config');
 
 cmd({
-    pattern: "owner",
-    react: "✅", 
-    desc: "Get owner number",
-    category: "main",
-    filename: __filename
-}, 
-async (conn, mek, m, { from }) => {
-    const reply = (text) => conn.sendMessage(from, { text }, { quoted: mek });
-
-    try {
-        const ownerNumber = config.OWNER_NUMBER || '0000000000';
-        const ownerName = config.OWNER_NAME || 'Owner';
-
-        const vcard = `
-BEGIN:VCARD
+  pattern: "owner",
+  alias: ["creator", "dev"],
+  category: "main",
+  react: "👑",
+  desc: "Send the owner contact",
+  filename: __filename
+},
+async (conn, m, { sender }) => {
+  try {
+    const kontakUtama = {
+      displayName: `ᴏᴡɴᴇʀ ${config.BOT_NAME}`,
+      vcard: `BEGIN:VCARD
 VERSION:3.0
-FN:${ownerName}
-TEL;type=CELL;type=VOICE;waid=${ownerNumber.replace('+', '')}:${ownerNumber}
-END:VCARD
-        `.trim();
+N:;;;; 
+FN:${config.OWNER_NAME}
+item1.TEL;waid=${config.OWNER_NUMBER}:${config.OWNER_NUMBER}
+item1.X-ABLabel:ᴍʏ ᴏᴡɴᴇʀ
+EMAIL;type=INTERNET:no-reply@example.com
+ORG:Owner ${config.BOT_NAME}
+END:VCARD`
+    };
 
-        await conn.sendMessage(from, {
-            contacts: {
-                displayName: ownerName,
-                contacts: [{ vcard }]
-            }
-        });
+    await conn.sendMessage(m.chat, {
+      contacts: { contacts: [kontakUtama] },
+      contextInfo: {
+        forwardingScore: 999,
+        isForwarded: false,
+        mentionedJid: [sender],
+        externalAdReply: {
+          showAdAttribution: true,
+          renderLargerThumbnail: true,
+          title: `${config.BOT_NAME} - ᴄᴏʀᴇ`,
+          containsAutoReply: true,
+          mediaType: 1,
+          jpegThumbnail: await getBuffer(config.MENU_IMAGE_URL),
+          mediaUrl: '',
+          sourceUrl: ''
+        }
+      }
+    }, { quoted: m });
 
-        const caption = `╭━━〔 𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃 〕━━┈⊷
-┃◈╭─────────────·๏
-┃◈┃• *ʜᴇʀᴇ ɪs ᴛʜᴇ ᴏᴡɴᴇʀ ᴅᴇᴛᴀɪʟs*
-┃◈┃• *𝐍𝐚𝐦𝐞* - ${ownerName}
-┃◈┃• *𝐍𝐮𝐦𝐛𝐞𝐫* ${ownerNumber}
-┃◈┃• *𝐕𝐞𝐫𝐬𝐢𝐨𝐧*: 1.0.0 Beta
-┃◈└───────────┈⊷
-╰──────────────┈⊷
-> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ*`;
-
-        await conn.sendMessage(from, {
-            image: { url: 'https://files.catbox.moe/roubzi.jpg' },
-            caption,
-            contextInfo: {
-                mentionedJid: [`${ownerNumber.replace('+', '')}@s.whatsapp.net`], 
-                forwardingScore: 999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363401051937059@newsletter',
-                    newsletterName: '𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃',
-                    serverMessageId: 143
-                }
-            }
-        }, { quoted: mek });
-
-    } catch (error) {
-        console.error(error);
-        reply(`An error occurred: ${error.message}`);
-    }
+  } catch (e) {
+    console.error(e);
+    m.reply("❌ Failed to send owner contact.");
+  }
 });

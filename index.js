@@ -1069,15 +1069,10 @@ if (isBanned) return; // Ignore banned users completely
 app.use(express.static(path.join(__dirname, 'lib')));
 
 app.get('/', (req, res) => {
-    res.redirect('/dyby.html');
+  res.redirect('/dyby.html');
 });
-app.listen(port, () => console.log(chalk.cyan(`
-╭──[ 🤖 WELCOME DEAR USER! ]─
-│
-│ If you enjoy using this bot,
-│ please ⭐  Star it & 🍴  Fork it on GitHub!
-│ your support keeps it growing! 💙 
-╰─────────`)));
-setTimeout(() => {
-    connectToWA()
-}, 4000);
+  app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
+  setTimeout(() => {
+  connectToWA()
+  }, 4000);
+

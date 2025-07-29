@@ -30,7 +30,7 @@ async (dyby, mek, m, { from, reply }) => {
     const sender = m?.sender || mek?.key?.participant || mek?.key?.remoteJid || 'unknown@s.whatsapp.net';
     const username = m.pushName || 'User';
     const plugins = commands.length;
-    const version = config.VERSION || '1.0.0';
+    const version = config.VERSION || '2.0.0';
     const uptime = () => {
       let sec = process.uptime();
       let h = Math.floor(sec / 3600);

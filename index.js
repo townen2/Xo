@@ -1066,117 +1066,18 @@ if (isBanned) return; // Ignore banned users completely
         };
     conn.serializeM = mek => sms(conn, mek, store);
   }
- app.get("/", (req, res) => {
-    res.send(`
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MEGALODON-MD | STATUS</title>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-        <style>
-          * {
-            box-sizing: border-box;
-          }
-  
-          body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Roboto Mono', monospace;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #ffffff;
-          }
-  
-          .card {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 30px 25px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(0, 255, 128, 0.3);
-            border: 1px solid #00ff99;
-            width: 90%;
-            max-width: 420px;
-            animation: fadeInUp 1.2s ease-out;
-          }
-  
-          .card h1 {
-            font-size: 1.8rem;
-            color: #00ff99;
-            margin-bottom: 10px;
-          }
-  
-          .card p {
-            font-size: 1rem;
-            color: #cccccc;
-          }
+app.use(express.static(path.join(__dirname, 'lib')));
 
-          .status-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #00ff99;
-            border-radius: 50%;
-            margin-right: 8px;
-            vertical-align: middle;
-            animation: pulse 1.2s infinite;
-          }
-  
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-  
-          @keyframes pulse {
-            0% {
-              transform: scale(1);
-              opacity: 1;
-            }
-            50% {
-              transform: scale(1.3);
-              opacity: 0.6;
-            }
-            100% {
-              transform: scale(1);
-              opacity: 1;
-            }
-          }
-  
-          @media (max-width: 480px) {
-            .card {
-              padding: 20px 15px;
-            }
-  
-            .card h1 {
-              font-size: 1.4rem;
-            }
-  
-            .card p {
-              font-size: 0.95rem;
-            }
-          }
-        </style>
-      </head>
-      <body>
-        <div class="card">
-          <h1><span class="status-dot"></span> MEGALODON MD IS RUNNING</h1>
-          <p>DYBY TECH IS MY OFC OWNER.</p>
-        </div>
-      </body>
-      </html>
-    `);
+app.get('/', (req, res) => {
+    res.redirect('/dyby.html');
 });
-  app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
-  setTimeout(() => {
-  connectToWA()
-  }, 4000);
+app.listen(port, () => console.log(chalk.cyan(`
+╭──[ 🤖 WELCOME DEAR USER! ]─
+│
+│ If you enjoy using this bot,
+│ please ⭐  Star it & 🍴  Fork it on GitHub!
+│ your support keeps it growing! 💙 
+╰─────────`)));
+setTimeout(() => {
+    connectToWA()
+}, 4000);

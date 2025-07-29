@@ -16,8 +16,8 @@ cmd({
     try {
         // 📁 Lecture de la version locale
         const localPath = path.join(__dirname, '../data/version.json');
-        let currentVersion = "Unknown";
-        let currentChangelog = "No changelog available.";
+        let currentVersion = "ᴜɴᴋɴᴏᴡɴ";
+        let currentChangelog = "ɴᴏ ᴄʜᴀɴɢᴇʟᴏɢ ᴀᴠᴀɪʟᴀʙʟᴇ.";
 
         if (fs.existsSync(localPath)) {
             const localData = JSON.parse(fs.readFileSync(localPath));
@@ -27,7 +27,7 @@ cmd({
 
         // 🌐 Récupération de la version GitHub
         const githubUrl = 'https://raw.githubusercontent.com/DybyTech/MEGALODON-MD/main/data/version.json';
-        let latestVersion = "Unknown";
+        let latestVersion = "ᴜɴᴋɴᴏᴡɴ";
         let latestChangelog = "ɴᴏ ᴄʜᴀɴɢᴇʟᴏɢ ᴀᴠᴀɪʟᴀʙʟᴇ.";
 
         try {
@@ -64,14 +64,14 @@ cmd({
         // ✉️ Construction du message
         const caption =
             `${greeting}, ${pushname}!\n\n` +
-            `📌 *ʙᴏᴛ ɴᴀᴍᴇ:* MEGALODON-MD\n` +
+            `📌 *ʙᴏᴛ ɴᴀᴍᴇ:* ᴍᴇɢᴀʟᴏᴅᴏɴ-ᴍᴅ\n` +
             `🔖 *ᴄᴜʀʀᴇɴᴛ ᴠᴇʀsɪᴏɴ:* ${currentVersion}\n` +
             `📢 *ʟᴀᴛᴇsᴛ ᴠᴇʀsɪᴏɴ:* ${latestVersion}\n` +
             `📂 *ᴛᴏᴛᴀʟ ᴘʟᴜɢɪɴs:* ${pluginCount}\n` +
             `🧩 *ᴛᴏᴛᴀʟ ᴄᴏᴍᴍᴀɴᴅs:* ${commandCount}\n\n` +
             `💾 *sʏsᴛᴇᴍ ɪɴғᴏ:*\n` +
             `⏳ *ᴜᴘᴛɪᴍᴇ:* ${uptime}\n` +
-            `📟 *ʀᴀᴍ ᴜsᴀɢᴇ:* ${usedRAM} MB / ${totalRAM} MB\n` +
+            `📟 *ʀᴀᴍ ᴜsᴀɢᴇ:* ${usedRAM} ᴍʙ / ${totalRAM} ᴍʙ\n` +
             `🖥️ *ʜᴏsᴛ ɴᴀᴍᴇ:* ${hostname}\n` +
             `📅 *ʟᴀsᴛ ᴜᴘᴅᴀᴛᴇ:* ${lastUpdate}\n\n` +
             `📝 *ᴄʜᴀɴɢᴇʟᴏɢ:*\n${latestChangelog}\n\n` +

@@ -34,7 +34,7 @@ END:VCARD`
 
     // 2️⃣ Message qui mentionne l'utilisateur
     await conn.sendMessage(m.chat, {
-      text: `ᴡᴀɢ ᴡᴀɴ @${sender.split("@")[0]}, ᴍʏ ʜᴀɴᴅsᴏᴍᴇ owner but ɪ ᴡᴀs ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ.`,
+      text: `ᴡᴀɢ ᴡᴀɴ @${sender.split("@")[0]}, *ᴍʏ ʜᴀɴᴅsᴏᴍᴇ ᴏᴡɴᴇʀ ʙᴜᴛ ɪ ᴡᴀs ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ*.`,
       mentions: [sender]
     }, { quoted: repf });
 

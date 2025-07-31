@@ -10,6 +10,9 @@ function convertToBool(text, fault = 'true') {
 module.exports = {
 SESSION_ID: process.env.SESSION_ID || "MEGALODON~MD~",
 // add your Session Id 
+//====================OPTIONAL AUTH ADDED IF NEEDED
+//BASE64_SESSION: ``, // uncomment if want 
+    // GET BASE564 SESSION ID AND PASTE HERE FOR SAFE AND END TO END ENCRYPTED DATA BASE64 QR GENERTOR HERE => https://github.com/Itxxwasi/base64session-.git
 AUTO_STATUS_SEEN: process.env.AUTO_STATUS_SEEN || "true",
 // make true or false status auto seen
 AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY || "false",

@@ -85,7 +85,78 @@ const credsPath = path.join(sessionDir, 'creds.json');
 if (!fs.existsSync(sessionDir)) {
     fs.mkdirSync(sessionDir, { recursive: true });
 }
+//===================================================un comment for impelemntation ========================================>
+// async function loadSession() {
+//     try {
+//         // Load from BASE64_SESSION first
+//         if (config.BASE64_SESSION) {
+//             console.log('🔐 Loading session from BASE64_SESSION...');
+//             const sessionData = Buffer.from(config.BASE64_SESSION, 'base64').toString('utf-8');
+//             fs.writeFileSync(credsPath, sessionData, 'utf8');
+//             console.log('✅ Session loaded from BASE64');
+//             return JSON.parse(sessionData);
+//         }
 
+//         // If no SESSION_ID provided at all
+//         if (!config.SESSION_ID) {
+//             console.log('⚠️ No SESSION_ID provided. QR code will be shown.');
+//             return null;
+//         }
+
+//         console.log('🌐 Downloading session data...');
+
+//         // Load from Xcall
+//         if (config.SESSION_ID.startsWith('MEGALODON~MD**')) {
+//             console.log('🔁 Downloading Xcall session...');
+//             const sessId = config.SESSION_ID.replace('MEGALODON~MD**', '');
+//             const response = await axios.get(`https://dave-auth-manager.onrender.com/files/${sessId}.json`);
+
+//             if (!response.data) {
+//                 throw new Error('❌ No credential data received from Xcall');
+//             }
+
+//             fs.writeFileSync(credsPath, JSON.stringify(response.data), 'utf8');
+//             console.log('✅ Xcall session downloaded');
+//             return response.data;
+//         }
+
+//         // Load from MEGA.nz
+//         console.log('🔁 Downloading MEGA.nz session...');
+//         const megaId = config.SESSION_ID.startsWith('MEGALODON~MD~')
+//             ? config.SESSION_ID.replace('MEGALODON~MD~', '')
+//             : config.SESSION_ID;
+
+//         const file = File.fromURL(`https://mega.nz/file/${megaId}`);
+//         const data = await new Promise((resolve, reject) => {
+//             file.download((err, data) => {
+//                 if (err) reject(err);
+//                 else resolve(data);
+//             });
+//         });
+
+//         fs.writeFileSync(credsPath, data);
+//         console.log('✅ MEGA.nz session downloaded');
+//         return JSON.parse(data.toString());
+//     } catch (error) {
+//         console.error('❌ Error loading session:', error.message);
+//         console.log('🧾 Will generate QR code instead');
+//         return null;
+//     }
+// }
+
+// module.exports = { loadSession };
+
+
+
+
+
+
+
+
+
+
+
+//=============================================================================
 async function loadSession() {
     try {
         if (!config.SESSION_ID) {
